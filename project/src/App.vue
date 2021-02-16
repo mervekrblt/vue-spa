@@ -21,6 +21,7 @@
     <div>
       <router-view />
     </div>
+    
     <Footer></Footer>
   </div>
 
@@ -49,7 +50,7 @@
 
   #nav a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #b6cadd;
   }
 
   #nav a.router-link-exact-active {
