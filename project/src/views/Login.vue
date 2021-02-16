@@ -10,36 +10,47 @@ export default {
       name: "",
       email: "",
       password:"",
-      logedIn: false
     }
   },
   computed: {
-    ...mapState(['user']),
+    ...mapState(['user', 'logedIn']),
   },
   methods: {
-    ...mapActions(['setUser']),
+    ...mapActions(['setUser', 'userLogIn']),
 
     login(){
       const params={
-          name:this.name,
-          email:this.email,
-          password:this.password
+          name: this.name,
+          email: this.email,
         }
         this.setUser(params)
-        console.log(this.user)
-    }
+        //console.log(this.user)
+
+        //hide login form with v-if="!this.logedIn"
+        this.userLogIn(true)
+        //console.log(this.logedIn)
+
+    },
+
+    
   },
 }
 </script>
 
 <template>
     <div class="login">
-    <form>
+
+    <form v-if="!this.logedIn">
       <input v-model="name" type="text"  placeholder="name">
       <input v-model="email" type="email"  required placeholder="email"> 
       <input v-model="password" type="password"  required placeholder="password">
-      <button type="submit" @click.prevent="login()">Login</button>
+      <button type="submit" @click.prevent="login()" >Login</button>
     </form>
+
+    <div v-else id="info">
+      <h1>Name: {{ user.name }} </h1>
+      <h1>Email: {{ user.email }} </h1>
+    </div>
   </div>
   
 </template>
@@ -82,6 +93,16 @@ button{
   font-size: 3vh;
   font-family: 'Dancing Script', cursive;
   font-weight: 600;
+}
+
+#info{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid red;
+  width: 30vh;
+  height: 30vh;
 }
 
 </style>

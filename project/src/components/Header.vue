@@ -1,4 +1,6 @@
 <script>
+  import {mapState} from 'vuex'
+
   export default {
     name: 'Header',
     data() {
@@ -9,11 +11,21 @@
       }
     },
 
+    computed: {
+      ...mapState(['user', 'logedIn']),
+    },
+
     methods: {
       changePath() {
         const newPath = this.$route.name
         //console.log(newPath)
-        this.path = newPath 
+        this.path = newPath
+      },
+      //
+      showUserName(){
+        if(this.logedIn){
+          return this.user.name.toUpperCase()
+        }else return "Login"
       }
     },
   }
@@ -28,12 +40,12 @@
     </div>
     <div>
       <div @click="changePath()" id="right">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/login">Login</router-link>|
-      <router-link to="/contact-us">Contact Us</router-link>
+        <router-link to="/">Home</router-link>|
+        <router-link to="/login"> {{ showUserName() }} </router-link>|
+        <router-link to="/contact-us">Contact Us</router-link>
+      </div>
     </div>
-    </div>
-    
+
 
   </section>
 
@@ -62,7 +74,7 @@
     width: 20vh;
   }
 
-    #right {
+  #right {
     display: flex;
     align-items: center;
     color: chartreuse;
