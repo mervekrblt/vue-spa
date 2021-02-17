@@ -17,9 +17,6 @@ export default {
       <p><i class="fab fa-linkedin-in"></i> <a :href="linkedIn">LinkedIn</a></p>
       <p><i class="fab fa-github"></i> <a :href="github"> GitHub </a> </p>
       <p>© 2021</p>
-      
-      
-    
 </section>   
 
 </template>

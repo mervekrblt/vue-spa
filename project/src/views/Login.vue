@@ -2,14 +2,13 @@
 import {mapState, mapActions} from 'vuex'
 
 
-
 export default {
   name: 'Login',
   data(){
     return {
       name: "",
       email: "",
-      //password:"", for security
+      password: ""
     }
   },
   computed: {
@@ -22,17 +21,28 @@ export default {
       const params={
           name: this.name,
           email: this.email,
+          password: this.password
         }
-        this.setUser(params)
-        //console.log(this.user)
 
-        //hide login form with v-if="!this.logedIn"
-        this.userLogIn(true)
-        //console.log(this.logedIn)
-
+        //chechking email, name and password are fullfilled then setUser and turn logIn into true
+        if(this.$refs.password.value === "" || this.name === ""){
+          alert("All information is required")
+        }else if(this.validateEmail() && this.$refs.password.value !== "" && this.name){
+          this.setUser(params)
+        //hide login form with v-if="!this.logedIn"          
+          this.userLogIn(true)
+        }
     },
 
-    
+    validateEmail() {
+    if (/\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+      //console.log(this.email)
+      return true
+    } else {
+      alert(`${this.email} email is not valid`)
+      return false
+    }
+}
   },
 }
 </script>
@@ -40,19 +50,21 @@ export default {
 <template>
     <div class="login">
 
+      <!--login -->
     <form v-if="!this.logedIn">
       <label >Name</label>
-      <input v-model="name" type="text"  placeholder="name">
+      <input v-model="name" type="text" required placeholder="name">
 
       <label >Email</label>
-      <input v-model="email" type="email"  placeholder="email">
+      <input v-model="email" type="email"  placeholder="email" @change="validateEmail">
 
       <label >Password</label>
-      <input type="password" placeholder="password">
+      <input type="password" ref="password" placeholder="password" required>
 
       <button type="submit" @click.prevent="login()" >Login</button>
     </form>
 
+    <!--info-->
     <div v-else id="info">
       <h1>Name: {{ user.name }} </h1>
       <h1>Email: {{ user.email }} </h1>
