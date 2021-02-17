@@ -9,7 +9,7 @@ export default {
     return {
       name: "",
       email: "",
-      password:"",
+      //password:"", for security
     }
   },
   computed: {
@@ -41,9 +41,15 @@ export default {
     <div class="login">
 
     <form v-if="!this.logedIn">
+      <label >Name</label>
       <input v-model="name" type="text"  placeholder="name">
-      <input v-model="email" type="email"  required placeholder="email"> 
-      <input v-model="password" type="password"  required placeholder="password">
+
+      <label >Email</label>
+      <input v-model="email" type="email"  placeholder="email">
+
+      <label >Password</label>
+      <input type="password" placeholder="password">
+
       <button type="submit" @click.prevent="login()" >Login</button>
     </form>
 
@@ -84,6 +90,7 @@ input{
   height: 3vh;
   font-size: 3vh;
   font-weight: 600;
+  margin-bottom: 2vh;
 }
 
 button{
@@ -100,9 +107,20 @@ button{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 2px solid red;
-  width: 30vh;
   height: 30vh;
+  font-family: 'Dancing Script', cursive;
+  background-color: rgb(229, 240, 229, 0.3);
+  border-radius: 2vh;
+}
+
+label{
+  font-family: 'Dancing Script', cursive;
+  font-weight: 600;
+  font-size: 3vh;
+  text-align: left;
+  background-color: rgb(226, 202, 170, 0.3);
+  width: 30vh;
+  border-radius: 1vh;
 }
 
 </style>

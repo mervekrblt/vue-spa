@@ -18,16 +18,21 @@
     methods: {
       changePath() {
         const newPath = this.$route.name
+
+        if(this.logedIn === true && newPath === "Login"){
+          this.path = "User Info"
+        }else {
         //console.log(newPath)
-        this.path = newPath
+          this.path = newPath
+        }
       },
       //
       showUserName(){
         if(this.logedIn){
           return this.user.name.toUpperCase()
-        }else return "Login"
+        }else {return "Login"}
       }
-    },
+    }
   }
 </script>
 
@@ -39,9 +44,9 @@
       <h3> {{ path }} </h3>
     </div>
     <div>
-      <div @click="changePath()" id="right">
-        <router-link to="/">Home</router-link>|
-        <router-link to="/login"> {{ showUserName() }} </router-link>|
+      <div @click="changePath" id="right">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/login"> {{ showUserName() }} </router-link> |
         <router-link to="/contact-us">Contact Us</router-link>
       </div>
     </div>
@@ -75,10 +80,9 @@
   }
 
   #right {
-    display: flex;
     align-items: center;
     color: chartreuse;
-    justify-content: space-around;
     width: 40vh;
+    margin-right: 2vh;
   }
 </style>
