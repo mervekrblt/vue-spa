@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .login{
-  height: 70vh;
+  height: 90vh;
   display: flex;
 }
 
@@ -116,13 +116,12 @@ button{
 
 #info{
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 30vh;
+  text-align: left;
+  height: min-content;
   font-family: 'Dancing Script', cursive;
   background-color: rgb(229, 240, 229, 0.3);
   border-radius: 2vh;
+  padding: 2vh;
 }
 
 label{

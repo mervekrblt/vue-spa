@@ -1,6 +1,4 @@
 <script>
-
-
 export default {
   name: 'Home',
 
@@ -22,6 +20,6 @@ export default {
 
 <style scoped>
 .home{
-  height: 70vh;
+  height: 90vh;
 }
 </style>
