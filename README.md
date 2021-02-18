@@ -17,14 +17,18 @@ Technologies that I used
 - [Icons](https://fontawesome.com/)
 - [Fonts](https://fonts.google.com/)
 
-## Project setup
-```
-npm install
-```
+## How to Use
+Clone the repository:
 
-### Compiles and hot-reloads for development
+```
+git clone https://github.com/mervekrblt/vue-spa.git
+```
+    
+Change into the directory and install all dependies
 ```
 cd project
+
+npm install
 
 npm run serve
 ```
