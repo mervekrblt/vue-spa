@@ -26,7 +26,7 @@ export default {
 
         //chechking email, name and password are fullfilled then setUser and turn logIn into true
         if(this.$refs.password.value === "" || this.name === ""){
-          alert("All information is required")
+          alert("Please enter all required information")
         }else if(this.validateEmail() && this.$refs.password.value !== "" && this.name){
           this.setUser(params)
         //hide login form with v-if="!this.logedIn"          
@@ -42,7 +42,13 @@ export default {
       alert(`${this.email} email is not valid`)
       return false
     }
-}
+  },
+
+    logout(){
+      console.log('logout')
+      this.userLogIn(false)
+    }
+
   },
 }
 </script>
@@ -56,7 +62,7 @@ export default {
       <input v-model="name" type="text" required placeholder="name">
 
       <label >Email</label>
-      <input v-model="email" type="email"  placeholder="email" @change="validateEmail">
+      <input v-model="email" type="email"  placeholder="email" >
 
       <label >Password</label>
       <input type="password" ref="password" placeholder="password" required>
@@ -68,6 +74,7 @@ export default {
     <div v-else id="info">
       <h1>Name: {{ user.name }} </h1>
       <h1>Email: {{ user.email }} </h1>
+      <button class="logout" @click.prevent="logout()"> Logout</button>
     </div>
   </div>
   
@@ -132,6 +139,10 @@ label{
   background-color: rgb(226, 202, 170, 0.3);
   width: 30vh;
   border-radius: 1vh;
+}
+
+.logout{
+  float: right;
 }
 
 </style>
