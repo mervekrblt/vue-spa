@@ -1,5 +1,7 @@
 # Vue SPA (Single Page Application) 
 
+[Live Version](https://vue-spa-merve.herokuapp.com/)
+
 This is a website with three pages and one modal building with vue.js.
 
 - Homepage
